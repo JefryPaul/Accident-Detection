@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <table border="1">
+            <tr>
+                <th>SL NO</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Address</th>
+                <th>District</th>
+                <th>Place</th>
+                <th>Photo</th>
+                <th>Proof</th>
+                <th>Action</th>
+            </tr>
+            {% for i in dis %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.authority_name}}</td>
+                <td>{{i.authority_email}}</td>
+                <td>{{i.authority_contact}}</td>
+                <td>{{i.authority_address}}</td>
+                <td>{{i.place.district.district_name}}</td>
+                <td>{{i.place.place_name}}</td>
+                <td>
+                    <img src="{{ i.authority_photo.url }}" alt="" width="250" height="250">
+                </td>
+                <td>
+                    <img src="{{ i.authority_proof.url }}" alt="" width="250" height="250">
+                </td>
+                <td><a href="{% url 'Admin:accept' i.id %}">Accept</a>
+                    <a href="{% url 'Admin:reject' i.id %}">Reject</a></td>
+                
+            </tr>
+
+            {% endfor %}
+        </table>
+    </form>
+    
+
+
+</body>
+</html>

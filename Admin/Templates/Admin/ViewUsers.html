@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <table border="1">
+            <tr>
+                <td>SL NO</td>
+                <td>Name</td>
+                <td>Contact</td>
+                <td>Email</td>
+                <td>Action</td>
+            </tr>
+            {% for i in dis %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.user_name}}</td>
+                <td>{{i.user_contact}}</td>
+                <td>{{i.user_email}}</td>
+                <td><a href="{% url 'Admin:deletedusers' i.id %}">Delete</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </form>
+    
+
+
+</body>
+</html>

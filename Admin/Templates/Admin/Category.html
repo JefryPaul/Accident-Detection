@@ -1,0 +1,42 @@
+<html>
+    <head>
+    </head>
+<body>
+<form method="post">
+    {% csrf_token %}
+
+<table border="3">
+<tr>
+    <td>Category</td>
+    <td><input type="text" name="txt_category" placeholder="enter the category" value="{{name.category_name}}"></td>
+</tr>
+
+<tr>
+    <td colspan="2" align="center">
+       <input type="submit" name="btnsubmit" value="Submit">
+    </td>
+   </tr>
+
+</table>
+
+<br>
+<table border="1">
+    <tr>
+        <td>SL NO</td>
+        <td>catagory</td>
+        <td>Action</td>
+    </tr>
+    {% for i in cate %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.category_name}}</td>
+        <td><a href="{% url 'Admin:deletediss' i.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+</form>
+</body>
+</html>
+   

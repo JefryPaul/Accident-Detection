@@ -1,0 +1,45 @@
+{% extends 'User/Headd.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>User Registration</title>
+    </head>
+    <body>
+
+   
+        
+        <form method="post">
+        {% csrf_token %}
+        
+        <table  border="1" align="center">
+
+    <tr>
+    <td colspan="2"><img src="{{dat.user_photo.url}}" alt="" width="250" height="250"></td>
+        </tr>
+        <tr>
+         <td>Name</td>
+         <td>{{dat.user_name}}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{dat.user_email}}</td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td>{{dat.user_address}}</td>
+        </tr>
+        <tr> 
+            <td>Contact</td>
+            <td>{{dat.user_contact}}</td>
+        </tr>
+        <tr>
+        <td colspan="2" align="center"><a href="{% url 'User:editprofile' %}">Edit Profile</a>
+                                       <a href="{% url 'User:changepassword' %}">Change Password</a>
+        </td>
+        </tr>    
+    </table>
+    </form>   
+ </body>
+</html>
+{% endblock content %}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hospital Registration</title>
+    </head>
+    <body>
+        <a href="{% url 'Hospital:homepage' %}">Home</a>
+
+   
+        
+        <form method="post">
+        {% csrf_token %}
+        
+        <table  border="1" align="center">
+
+    <tr>
+    <td colspan="2"><img src="{{dat.hospital_photo.url}}" alt="" width="250" height="250"></td>
+        </tr>
+        <tr>
+         <td>Name</td>
+         <td>{{dat.hospital_name}}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{dat.hospital_email}}</td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td>{{dat.hospital_address}}</td>
+        </tr>
+        <tr> 
+            <td>Contact</td>
+            <td>{{dat.hospital_contact}}</td>
+        </tr>
+        <tr>
+        <td colspan="2" align="center"><a href="{% url 'Hospital:editprofile' %}">Edit Profile</a>
+                                       <a href="{% url 'Hospital:changepassword' %}">Change Password</a>
+        </td>
+        </tr>    
+    </table>
+    </form>   
+ </body>
+</html>

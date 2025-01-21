@@ -1,0 +1,63 @@
+<html>
+    <head>
+    </head>
+<body>
+<form method="post">
+    {% csrf_token %}
+
+<table border="3">
+<tr>
+    <td>Admin Name</td>
+    <td><input type="text" name="txt_name" placeholder="enter the name"></td>
+</tr>
+
+
+<tr>
+    <td>Admin Email</td>
+    <td><input type="text" name="txt_email" placeholder="enter the email"></td>
+</tr>
+
+
+<tr>
+    <td>Admin password</td>
+    <td><input type="text" name="txt_password" placeholder="enter the password"></td>
+</tr>
+
+
+
+<tr>
+    <td align="center">
+       <input type="submit" name="btnsubmit" value="Submit">
+    </td>
+
+    <td align="center">
+        <input type="submit" name="btncancel" value="Cancel">
+    </td>
+</tr>
+   
+</table>
+
+<br>
+
+<table border="1">
+    <tr>
+        <td>SL NO</td>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Password</td>
+    </tr>
+    {% for i in cate %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.admin_name}}</td>
+        <td>{{i.admin_email}}</td>
+        <td>{{i.admin_password}}</td>
+        <td><a href="{% url 'Admin:deletedisss' i.id %}">Delete</a>
+    </tr>
+    {% endfor %}
+</table>
+</form>
+</script>
+</body>
+</html>
+   

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Request</title>
+</head>
+<body>
+    <form>
+        <table border="1">
+            <tr>
+                <th>File</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Id</th>
+            </tr>
+            {% for i in dis %}
+            <tr>
+                <td>
+                    <img src="{{ i.request_file.url }}" alt="" width="250" height="250">
+                </td>
+                <td>{{i.request_date}}</td>
+                {% if i.request_status == 0 %}
+                <td>Pending</td>
+                {% endif %}
+                {% if i.request_status == 1 %}
+                <td>Verified</td>
+                {% endif %}
+                <td>{{i.user_id.user_name}}</td>
+                
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+    
+</body>
+</html>

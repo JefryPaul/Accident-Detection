@@ -1,0 +1,43 @@
+{% extends 'User/Headd.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Request</title>
+</head>
+<body>
+    <form>
+        <table border="1">
+            <tr>
+            <th>SL NO</th>
+            <th>File</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Authority</th>
+            <th>Hospital</th>
+            </tr>
+            {%for i in req%}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td><a href="{{i.request_file.url}}"><img src="{{i.request_file.url}}" alt="" width="150px" height="150px"></a></td>
+                <td>{{i.request_date}}</td>
+
+                {% if i.request_status == 0 %}
+                <td>Pending</td>
+                {% endif %}
+                {% if i.request_status == 1 %}
+                <td>Verified</td>
+                {% endif %}
+                
+                <td></td>
+                <td></td>
+            </tr>
+            {%endfor%}
+        </table>
+    </form>
+    
+</body>
+</html>
+{% endblock content %}

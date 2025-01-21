@@ -1,0 +1,23 @@
+{% extends 'User/Head.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Predictions</title>
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+    <input type="file" name="video" id="video">
+    <input type="submit" value="PREDICT">
+    <h1>Accident Detection Results</h1>
+    {% if detected_frame %}
+        <p>{{ message }}</p>
+        <img src="/temporary_videos/{{ detected_frame }}" alt="Detected Frame" style="max-width: 30%; height: auto;">
+    {% else %}
+        <p>{{ message }}</p>
+    {% endif %}
+</form>
+</body>
+</html>
+{% endblock content %}
