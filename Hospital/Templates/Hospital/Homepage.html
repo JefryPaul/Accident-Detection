@@ -1,15 +1,486 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Accident Bot</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="{% static 'User/assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'User/assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'User/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'User/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'User/assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'User/assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'User/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'User/assets/css/main.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: HeroBiz
+  * Template URL: https://bootstrapmade.com/herobiz-bootstrap-business-template/
+  * Updated: Aug 07 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
-<h1>Welcome,hospital {{dat.hospital_name}}</h1>
-<body>
-    <form action="" method="post">
-        {% csrf_token %}
-        <a href="{% url 'Hospital:myprofile' %}">My Profile</a>
-    </form>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+
+      <a href="{% url 'User:homepage' %}" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1 class="sitename">Accident Bot</h1>
+        <span>.</span>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="{% url 'User:homepage' %}" class="active">Home<br></a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="{% url 'User:myrequest' %}">View Requests</a></li>
+          <li><a href="#services">Services</a></li>
+          <!-- <li><a href="#team">Team</a></li> -->
+          <li><a href="{% url 'User:myprofile' %}">Profile</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="">Logout</a></li>
+          
+
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="{% url 'User:predict' %}">Get Started</a>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+
+      <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
+        <img src="{% static 'User/assets/img/hhh.jpeg' %}" class="img-fluid animated" alt="" width="1000px">
+        <h1>Welcome to <span>Accident Bot</span></h1>
+        <p>Real-time Accident Detection and Alert System Using CCTV for Enhanced Road Safety</p>
+        <div class="d-flex">
+          <a href="{% url 'User:predict' %}" class="btn-get-started scrollto">Use Our AI</a>
+        </div>
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- Featured Services Section -->
+    <!-- /Featured Services Section -->
+    <!-- About Section -->
+    <section  class="about section">
+
+    
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="col-lg-5">
+            <!-- <div class="about-img">
+              <img src="{% static 'User/assets/img/about-portrait.jpg' %}" class="img-fluid" alt="">
+            </div> -->
+          </div>
+
+          <div class="col-lg-7">
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+    <!-- Clients Section -->
+    
+
+    <!-- Call To Action Section -->
+    <section id="call-to-action" class="call-to-action section">
+
+      <div class="container" data-aos="zoom-out">
+
+        <div class="row g-5">
+
+          <div class="col-lg-8 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
+            <h3>Accident Detection <em>Innovation</em> for Safer Roads</h3>
+            <p>Our system leverages advanced technologies to detect accidents in real time, ensuring swift alerts to emergency services and authorities. By reducing response time, we aim to save lives and create safer roadways for everyone.</p>
+                        <a class="cta-btn align-self-start" href="#">Call To Action</a>
+          </div>
+
+          <div class="col-lg-4 col-md-6 order-first order-md-last d-flex align-items-center">
+            <div class="img">
+              <img src="assets/img/cta.jpg" alt="" class="img-fluid">
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Call To Action Section -->
+<br>
+<div id="about"></div>
+
+<br>
+
+<br>
+    <!-- Onfocus Section -->
+    <section id="onfocus" class="onfocus section dark-background" >
+
+      <div class="container-fluid p-0" data-aos="fade-up" >
+
+        <div class="row g-0" >
+          <div class="col-lg-6 video-play position-relative">
+            <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a>
+          </div>
+          <div class="col-lg-6">
+            <div class="content d-flex flex-column justify-content-center h-100">
+              <h3>About Our Detection System</h3>
+              <p class="fst-italic">
+                Accident detection using CCTV is a smart system designed to automatically identify traffic accidents by analyzing video footage captured by surveillance cameras.
+              </p>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> Detect Accident From The Video</li>
+                <li><i class="bi bi-check-circle"></i> Contact with Authorities When Accident Detected</li>
+                <li><i class="bi bi-check-circle"></i> Send Mail to Authority When Accident Detected</li>
+                <li><i class="bi bi-check-circle"></i> VGG16 Based Neural Network Model</li>
+              </ul>
+              <a href="#" class="read-more align-self-start"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Onfocus Section -->
+
+    
+    <!-- Services Section -->
+    <section id="services" class="services section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Our Services</h2>
+        <p>Accident detection using CCTV is an intelligent and automated system designed to identify traffic accidents by analyzing video footage captured by surveillance cameras deployed in public and private areas. This cutting-edge system harnesses advanced technologies such as computer vision, machine learning, and deep learning to monitor and analyze real-time video feeds. By detecting unusual events like vehicle collisions, rollovers, sudden halts, or erratic driving patterns, the system aims to improve road safety and reduce the time taken to respond to accidents.
+
+          The system is trained to recognize specific accident scenarios by processing large datasets of annotated traffic footage, ensuring high accuracy in detection and minimal false alarms. Once an accident is detected, it can instantly alert emergency services, nearby hospitals, and relevant authorities with precise location details and additional contextual information. Additionally, this technology can be integrated with smart city infrastructure and IoT devices, enabling traffic signal control or dynamic rerouting to prevent further congestion around the accident site.
+          
+          With its ability to operate 24/7 and deliver timely responses, this system not only aids in saving lives but also supports post-accident investigations by providing crucial video evidence. Its scalable design makes it suitable for deployment in urban areas, highways, and even remote locations, contributing significantly to safer and smarter transportation systems.</p>
+      </div><!-- End Section Title -->
+
+
+        </div>
+
+      </div>
+
+
+    
+
+    <!-- Faq Section -->
+    <section id="faq" class="faq section">
+
+      <div class="container-fluid">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-7 d-flex flex-column justify-content-center order-2 order-lg-1">
+
+            
+
+            
+
+          </div>
+
+          <div class="col-lg-5 order-1 order-lg-2">
+            <img src="assets/img/faq.jpg" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="100">
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Faq Section -->
+
+    <!-- Portfolio Section -->
+   
+    <!-- Team Section -->
+    <section id="team" class="team section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Our Team</h2>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100" style="align-items: flex-start;">
+
+        <div class="row gy-5">
+
+          <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="200">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
+              </div>
+              <div class="member-info">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter-x"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+                <h4>Polu Chacko</h4>
+                <span>Project Member</span>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="400">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
+              </div>
+              <div class="member-info">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter-x"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+                <h4>Jefry Paul</h4>
+                <span>Project Member</span>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+        </div>
+
+      </div>
+
+    </section><!-- /Team Section -->
+
+    <!-- Recent Posts Section -->
+    <section id="recent-posts" class="recent-posts section">
+
+      
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contact</h2>
+      </div><!-- End Section Title -->
+
+      
+
+      <div class="container" data-aos="fade">
+
+        <div class="row gy-5 gx-lg-5">
+
+          <div class="col-lg-4">
+
+            <div class="info">
+              <h3>Get in touch</h3>
+              <p>For inquiries or collaborations, feel free to connect with us. Together, we can enhance road safety and save lives with our real-time accident detection and alert system</p>
+
+              <div class="info-item d-flex">
+                <i class="bi bi-geo-alt flex-shrink-0"></i>
+                <div>
+                  <h4>Location:</h4>
+                  <p>Angamaly, Ernakulam, Kerala</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex">
+                <i class="bi bi-envelope flex-shrink-0"></i>
+                <div>
+                  <h4>Email:</h4>
+                  <p>accidentbot@gmail.com</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex">
+                <i class="bi bi-phone flex-shrink-0"></i>
+                <div>
+                  <h4>Call:</h4>
+                  <p>+91 9061038240</p>
+                  <p>+91 8289867644</p>
+                </div>
+              </div><!-- End Info Item -->
+
+            </div>
+
+          </div>
+
+          <!-- <div class="col-lg-8">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required="">
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" placeholder="Message" required=""></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div>End Contact Form -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6 footer-about">
+            <a href="index.html" class="logo d-flex align-items-center">
+              <span class="sitename">ACCIDENT BOT</span>
+            </a>
+            <div class="footer-contact pt-3">
+              <p>Angamaly</p>
+              <p>Ernakulam, Kerala</p>
+              <p class="mt-3"><strong>Phone:</strong> <span>+91 9061038240</span></p>
+              <p class="mt-3"><strong>Phone:</strong> <span>+91 8289867644</span></p>
+              <p><strong>Email:</strong> <span>accidentbot@gmail.com</span></p>
+            </div>
+          </div>
+
+          
+
+          <!-- <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="#">Web Design</a></li>
+              <li><a href="#">Web Development</a></li>
+              <li><a href="#">Product Management</a></li>
+              <li><a href="#">Marketing</a></li>
+              <li><a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Hic solutasetp</h4>
+            <ul>
+              <li><a href="#">Molestiae accusamus iure</a></li>
+              <li><a href="#">Excepturi dignissimos</a></li>
+              <li><a href="#">Suscipit distinctio</a></li>
+              <li><a href="#">Dilecta</a></li>
+              <li><a href="#">Sit quas consectetur</a></li>
+            </ul>
+          </div>-->
+          <div class="col-lg-2 col-md-3 footer-links">
+          </div>
+          <div class="col-lg-2 col-md-3 footer-links">
+          </div>
+          <div class="col-lg-2 col-md-3 footer-links">
+          </div>
+          <!-- <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Nobis illum</h4>
+            <ul>
+              <li><a href="#">Ipsam</a></li>
+              <li><a href="#">Laudantium dolorum</a></li>
+              <li><a href="#">Dinera</a></li>
+              <li><a href="#">Trodelas</a></li>
+              <li><a href="#">Flexo</a></li>
+            </ul>
+          </div>  -->
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Terms of service</a></li>
+              <li><a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="copyright text-center">
+      <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+
+        <div class="d-flex flex-column align-items-center align-items-lg-start">
+          <div>
+            © Copyright <strong><span>AccedentBot</span></strong>. All Rights Reserved
+          </div>
+          <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/herobiz-bootstrap-business-template/ -->
+          </div>
+        </div>
+
+        <div class="social-links order-first order-lg-last mb-3 mb-lg-0">
+          <a href=""><i class="bi bi-twitter-x"></i></a>
+          <a href=""><i class="bi bi-facebook"></i></a>
+          <a href=""><i class="bi bi-instagram"></i></a>
+          <a href=""><i class="bi bi-linkedin"></i></a>
+        </div>
+
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'User/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'User/assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'User/assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'User/assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'User/assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'User/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'User/assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'User/assets/js/main.js' %}"></script>
+
 </body>
+
 </html>
